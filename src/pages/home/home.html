@@ -1,14 +1,45 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Consulta CEP
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-list inset>
+
+    <ion-item>
+      <ion-label>CEP</ion-label>
+      <ion-input type="number" [(ngModel)]="cep"></ion-input>
+    </ion-item>
+
+
+  </ion-list>
+
+  <button ion-button block (click)="GetAddress()">Consultar</button>
+
+  <h4 id="error">{{errorMessage}}</h4>
+
+  <ion-list *ngIf="address">  
+    <ion-item>
+          <ion-label floating>Cidade</ion-label>
+          <ion-input type="text" [(ngModel)]="address.localidade"></ion-input>
+    </ion-item>
+
+    <ion-item>
+          <ion-label floating>Estado</ion-label>
+          <ion-input type="text" [(ngModel)]="address.uf"></ion-input>
+    </ion-item>
+
+    <ion-item>
+          <ion-label floating>Logradouro</ion-label>
+          <ion-input type="text" [(ngModel)]="address.logradouro"></ion-input>
+    </ion-item>
+
+    <ion-item>
+          <ion-label floating>Bairro</ion-label>
+          <ion-input type="text" [(ngModel)]="address.bairro"></ion-input>
+    </ion-item>
+  </ion-list>
 </ion-content>
